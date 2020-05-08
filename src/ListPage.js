@@ -2,16 +2,35 @@ import React, { Component } from 'react';
 import request from 'superagent';
 
 export default class ListPage extends Component {
+
+state = {
+    minerals: [],
+    searchQuery: ''
+}
+
+async componentDidMount(){
+        const searchParams = new URLSearchParams(window.location.search);
+        const query = searchParams.get('search') || '';
+        this.setState({ searchQuery: query });
+
+        const response = await request.get(`https://safe-bastion-92853.herokuapp.com/minerals`)
+
+        this.setState({ minerals: response.body })  
+      }
+
     render() {
         return (
             <ul>
-                <li className="minerals">
-                    <h2>Name: {this.props.name}</h2>
-                    <p>Vibrational Frequency: {this.props.vibrates_to}</p>
-                    <p>Healing: {this.props.healing}</p>
-                    <p>Associated Signs: {this.props.associated_signs}</p>
-                    <p>Chakra: {this.props.chakra}</p>
-                </li>
+            {
+                this.state.minerals.map((mineral)=> {
+                    return <li className="minerals">
+                    <h2>Name: {mineral.name}</h2>
+                    <p>Vibrational Frequency: {mineral.vibrates_to}</p>
+                    <p>Healing: {mineral.healing}</p>
+                    <p>Associated Signs: {mineral.associated_signs}</p>
+                    <p>Chakra: {mineral.chakra}</p>
+                    </li> })
+                    }
             </ul>
         )
     }
