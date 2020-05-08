@@ -29,7 +29,7 @@ async componentDidMount(){
                     return <li className="minerals">
                     <h2>{mineral.name}</h2>
                     <p>Vibrational Frequency: {mineral.vibrates_to}</p>
-                    <p>Rarity: {mineral.healing
+                    <p>Rarity: {mineral.rarity
                     ? 'It is rare.'
                     : 'It easy to find.'}
                     </p>
