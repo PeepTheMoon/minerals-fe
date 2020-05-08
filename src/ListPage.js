@@ -24,7 +24,7 @@ async componentDidMount(){
             {
                 this.state.minerals.map((mineral)=> {
                     return <li className="minerals">
-                    <h2>Name: {mineral.name}</h2>
+                    <h2>{mineral.name}</h2>
                     <p>Vibrational Frequency: {mineral.vibrates_to}</p>
                     <p>Healing: {mineral.healing}</p>
                     <p>Associated Signs: {mineral.associated_signs}</p>
