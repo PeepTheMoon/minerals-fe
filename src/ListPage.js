@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import request from 'superagent';
 
+//heroku site link
+//https://safe-bastion-92853.herokuapp.com/minerals
+
 export default class ListPage extends Component {
 
 state = {
@@ -13,7 +16,7 @@ async componentDidMount(){
         const query = searchParams.get('search') || '';
         this.setState({ searchQuery: query });
 
-        const response = await request.get(`https://safe-bastion-92853.herokuapp.com/minerals`)
+        const response = await request.get(`http://localhost:3000/minerals`)
 
         this.setState({ minerals: response.body })  
       }
@@ -26,7 +29,10 @@ async componentDidMount(){
                     return <li className="minerals">
                     <h2>{mineral.name}</h2>
                     <p>Vibrational Frequency: {mineral.vibrates_to}</p>
-                    <p>Healing: {mineral.healing}</p>
+                    <p>Rarity: {mineral.healing
+                    ? 'It is rare.'
+                    : 'It easy to find.'}
+                    </p>
                     <p>Associated Signs: {mineral.associated_signs}</p>
                     <p>Chakra: {mineral.chakra}</p>
                     </li> })
