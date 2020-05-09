@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import request from 'superagent';
+import './App.css';
 
 export default class DetailPage extends Component {
 

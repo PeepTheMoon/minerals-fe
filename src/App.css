@@ -9,11 +9,20 @@
    text-align: center;
  }
 
+ .mineral-object {
+  height: 400px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(219, 212, 230);
+  text-align: center;
+  margin: 40px;
+  border-radius: 10px;
+  border: 1px dashed black;
+  box-shadow: 3px 3px 3px rgba(51, 56, 54, 0.767);
+ }
+
  h2 {
   margin: 15px;
 }
 
-ul {
-  display: flex;
-  flex-wrap: wrap;
-}
