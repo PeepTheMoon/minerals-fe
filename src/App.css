@@ -22,7 +22,34 @@
   box-shadow: 3px 3px 3px rgba(51, 56, 54, 0.767);
  }
 
+ header {
+   margin-top: 20px;
+ }
+
  h2 {
   margin: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px;
+  padding: 15px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(51, 56, 54, 0.767);
+}
+
+input {
+  margin-left: 10px;
+}
+
+label {
+  margin-top: 5px;
 }
 
