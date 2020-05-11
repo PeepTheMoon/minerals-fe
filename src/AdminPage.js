@@ -45,6 +45,9 @@ export default class AdminPage extends Component {
      }
 
     render() {
+        console.log('=============================\n')
+        console.log('|| this.state', this.state)
+        console.log('\n=============================')
         return (
             <div>
                 <form className="form" onSubmit={this.handleSubmit}>
@@ -72,13 +75,13 @@ export default class AdminPage extends Component {
                     </label>
 
                     <label>
-                    Check if rare: 
-                    <input onChange={this.handleRareChange} checked={this.state.rarity === 'false'} value="false" type="radio" name="rarity"/>
+                    Check if not rare: 
+                    <input onChange={this.handleRareChange} value="false" type="radio" name="rarity"/>
                     </label>
 
                     <label>
-                    Check if not rare: 
-                    <input onChange={this.handleRareChange} checked={true} value="true" type="radio" name="rarity"/>
+                    Check if rare: 
+                    <input onChange={this.handleRareChange} value="true" type="radio" name="rarity"/>
                     </label>
 
                     <button>Submit</button>

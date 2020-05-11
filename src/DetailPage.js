@@ -3,6 +3,7 @@ import request from 'superagent';
 import ListItem from './ListItem.js';
 import './App.css';
 
+
 export default class DetailPage extends Component {
 
     state = { mineral: {} }
@@ -18,14 +19,12 @@ export default class DetailPage extends Component {
         return (
             <div>
                 Dem Deets:
-                <section>
-                {/* remove stringify when ListItem is all hooked up */}
+                <section className="mineral-object">
                     { 
                         this.state.mineral
-                        ? JSON.stringify(this.state.mineral)
+                        ? <ListItem className="mineral-info" mineral={this.state.mineral} />
                         : 'Loading Mineral Information...' 
                     }
-                    <ListItem mineral={this.state.mineral} />
                 </section>
             </div>
         )
