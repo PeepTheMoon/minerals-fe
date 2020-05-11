@@ -10,8 +10,9 @@ export default class DetailPage extends Component {
 
     componentDidMount = async () => {
         const fetchedData = await request.get(`http://localhost:3000/mineral/${this.props.match.params.id}`);
+        console.log(fetchedData.body);
 
-        this.setState({ mineral: fetchedData.body });
+        this.setState({ mineral: fetchedData.body[0] });
     }
 
     render() {
