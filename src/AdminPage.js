@@ -45,9 +45,7 @@ export default class AdminPage extends Component {
      }
 
     render() {
-        console.log('=============================\n')
-        console.log('|| this.state', this.state)
-        console.log('\n=============================')
+     
         return (
             <div>
                 <form className="form" onSubmit={this.handleSubmit}>
