@@ -8,23 +8,46 @@ import './App.css';
 
 export default class ListPage extends Component {
 
-state = { minerals: [] }
+state = { 
+    minerals: [],
+    colors: [],
+    colorFilter: '' 
+    }
 
 componentDidMount = async () => {
         const fetchedData = await request.get(`http://localhost:3000/minerals`);
+        const fetchedColorData = await request.get(`http://localhost:3000/colors`);
 
-        console.log(fetchedData);
+        this.setState({ 
+            minerals: fetchedData.body, 
+            colors: fetchedColorData.body 
+            })  
+      }
 
-        this.setState({ minerals: fetchedData.body })  
+      handleChange = (e) => {
+          this.setState({ colorFilter: e.target.value })
       }
 
     render() {
         return (
-            <ul>
-            Mineral List:
-            {   
-                this.state.minerals.map((mineral)=> {
-                    return <li className="mineral-object" key={mineral.id}>
+            <div>
+                <select onChange={this.handleChange}>
+                    <option value="">Show All Minerals</option>
+                    {
+                        this.state.colors.map(
+                            color => <option value={color.color}>{color.color}</option>
+                        )
+                    }
+                </select>
+                Minerals List:
+                {
+                    this.state.minerals
+                    .filter(mineral => {
+                        if (!this.state.colorFilter) return true;
+                        return mineral.color === this.state.colorFilter
+                    })
+                    .map(mineral => {
+                        return <li className="mineral-object" key={mineral.id}>
                     <Link to={ `mineral/${mineral.id}` }>
                         <h2>{mineral.name}</h2>
                     </Link>
@@ -35,10 +58,10 @@ componentDidMount = async () => {
                     </p>
                     <p>Associated Signs: {mineral.associated_signs}</p>
                     <p>Chakra: {mineral.chakra}</p>
-                    </li> 
-                })
-            }
-            </ul>
+                    </li>
+                    })
+                }
+            </div>
         )
     }
 }
